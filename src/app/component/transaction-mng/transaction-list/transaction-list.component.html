@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-1">№</div>
+  <div class="col-1">Account from</div>
+  <div class="col-2">Amount</div>
+  <div class="col-1">Currency</div>
+  <div class="col-1">Account to</div>
+  <div class="col-2">Amount</div>
+  <div class="col-1">Currency</div>
+</div>
+<div class="row">
+  <div class="col-1">№</div>
+  <div class="col-1">Account from</div>
+  <div class="col-2">Amount</div>
+  <div class="col-1">Currency</div>
+  <div class="col-1">Account to</div>
+  <div class="col-2">Amount</div>
+  <div class="col-1">Currency</div>
+</div>
+
+<div *ngFor="let transaction of transactionList">
+  <app-transaction-item [transaction]="transaction"></app-transaction-item>
+</div>

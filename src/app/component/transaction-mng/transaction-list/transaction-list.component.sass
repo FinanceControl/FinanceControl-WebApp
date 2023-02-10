@@ -1,0 +1,52 @@
+.table
+  display: grid
+  grid-template-columns: repeat(7, 1fr)
+  grid-row-template:repeat(2, 1fr)
+  gap: 1px
+
+.id-header
+  grid-column: 1
+  grid-row: 1 / 3
+
+.side-header
+  grid-row:1
+
+.side-header-from
+  @extend .side-header
+  grid-column: 2/5
+
+.side-header-to
+  @extend .side-header
+  grid-column: 5/8
+
+.side-detail-header
+  grid-row:2
+
+.side-account-from-header
+  @extend .side-detail-header
+  grid-column: 2
+
+.side-amount-from-header
+  @extend .side-detail-header
+  grid-column: 3
+
+.side-currency-from-header
+  @extend .side-detail-header
+  grid-column: 4
+
+.side-account-to-header
+  @extend .side-detail-header
+  grid-column: 5
+
+.side-amount-to-header
+  @extend .side-detail-header
+  grid-column: 6
+
+.side-currency-to-header
+  @extend .side-detail-header
+  grid-column: 7
+
+.table > div
+  border: 1px solid black
+  padding: 10px
+  

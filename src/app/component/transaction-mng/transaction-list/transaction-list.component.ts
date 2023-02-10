@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { param_AccountId, param_BankId } from 'src/app/appRoutesConst';
+import { AccountService } from 'src/app/service/account-srv/account.service';
 import { TransactionModel } from '../../../model/transaction.model';
 import { TransactionService } from '../../../service/transaction-srv/transaction.service';
+import { TransactionViewModel } from './transaction-view.model';
 
 @Component({
   selector: 'app-transaction-list',
@@ -10,8 +12,8 @@ import { TransactionService } from '../../../service/transaction-srv/transaction
   styleUrls: ['./transaction-list.component.sass']
 })
 export class TransactionListComponent  implements OnInit {
-  transactionList:TransactionModel[] = []
-  constructor(private transactionSrv:TransactionService, private route:ActivatedRoute){
+  transactionList:TransactionViewModel[] = []
+  constructor(private transactionSrv:TransactionService, private route:ActivatedRoute, private accountSrv:AccountService){
   }
   
 
@@ -23,11 +25,13 @@ export class TransactionListComponent  implements OnInit {
   private loadTransactions(params:Params) {
     let activedAccountId = params[param_AccountId]
     let activedBankId = params[param_BankId]
+    let transactionModelArr: TransactionModel[] = []
     if (activedBankId != undefined)
-      this.transactionList = this.transactionSrv.GetForBankById(activedBankId)
+      transactionModelArr =  this.transactionSrv.GetForBankById(activedBankId)
     else if (activedAccountId != undefined)
-      this.transactionList = this.transactionSrv.GetForAccountById(activedAccountId);
+      transactionModelArr = this.transactionSrv.GetForAccountById(activedAccountId);
     else
-      this.transactionList = this.transactionSrv.GetAll();
+      transactionModelArr = this.transactionSrv.GetAll();
+    this.transactionList = transactionModelArr.map((val,idx,arr)=>TransactionViewModel.BuildFromModel(val, this.accountSrv))
   }
 }

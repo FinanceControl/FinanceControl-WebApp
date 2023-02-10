@@ -1,39 +1,14 @@
-<div class="table">
-  <div class="id-header">
-    №
-  </div>
-  <div class="side-header-from">
-    from
-  </div>
-  <div class="side-account-from-header">Account</div>
-  <div class="side-amount-from-header">Amount</div>
-  <div class="side-currency-from-header">Currency</div>
-  <div class="side-header-to">
-    to
-  </div>
-  <div class="side-account-to-header">Account</div>
-  <div class="side-amount-to-header">Amount</div>
-  <div class="side-currency-to-header">Currency</div>
-</div>
-<div class="row">
-  <div class="col-1">№</div>
-  <div class="col-1">Account from</div>
-  <div class="col-2">Amount</div>
-  <div class="col-1">Currency</div>
-  <div class="col-1">Account to</div>
-  <div class="col-2">Amount</div>
-  <div class="col-1">Currency</div>
-</div>
-<div class="row">
-  <div class="col-1">№</div>
-  <div class="col-1">Account from</div>
-  <div class="col-2">Amount</div>
-  <div class="col-1">Currency</div>
-  <div class="col-1">Account to</div>
-  <div class="col-2">Amount</div>
-  <div class="col-1">Currency</div>
-</div>
-
-<div *ngFor="let transaction of transactionList">
-  <app-transaction-item [transaction]="transaction"></app-transaction-item>
-</div>
+<table>
+  <tr>
+    <th rowspan="2">No</th>
+    <th colspan="2">Списание</th>
+    <th colspan="2">Поступление</th>
+  </tr>
+  <tr>
+    <th>Счет</th>
+    <th>сумма</th>
+    <th>Счет</th>
+    <th>сумма</th>
+  </tr>
+  <app-transaction-item [transaction]="transaction" *ngFor="let transaction of transactionList"></app-transaction-item>
+</table>

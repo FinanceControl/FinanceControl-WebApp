@@ -13,6 +13,9 @@ import { BankEditComponent } from './component/account-mng/bank-edit/bank-edit.c
 import { TransactionEditComponent } from './component/transaction-mng/transaction-edit/transaction-edit.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './appRoutes';
+import { AccountSideListComponent } from './component/account-sidebar/account-side-list/account-side-list.component';
+import { AccountSideGroupComponent } from './component/account-sidebar/account-side-list/account-side-group/account-side-group.component';
+import { AccountSideItemComponent } from './component/account-sidebar/account-side-list/account-side-item/account-side-item.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { appRoutes } from './appRoutes';
     AccountGroupComponent,
     AccountEditComponent,
     BankEditComponent,
-    TransactionEditComponent
+    TransactionEditComponent,
+    AccountSideListComponent,
+    AccountSideGroupComponent,
+    AccountSideItemComponent
   ],
   imports: [
     BrowserModule,

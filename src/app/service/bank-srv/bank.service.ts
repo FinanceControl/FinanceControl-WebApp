@@ -10,11 +10,11 @@ export class BankService {
   private static bankId:number = 0
   constructor() {
     BankService.bankId +=1
-    this.bankList.push(new BankModel(BankService.bankId, Guid.create(), "BKC"));
+    this.bankList.push(new BankModel(BankService.bankId, Guid.create(), "BKC", BankService.bankId * 10));
     BankService.bankId +=1
-    this.bankList.push(new BankModel(BankService.bankId,Guid.create(), "Тиньков"));
+    this.bankList.push(new BankModel(BankService.bankId, Guid.create(), "Тиньков", BankService.bankId * 10));
     BankService.bankId +=1
-    this.bankList.push(new BankModel(BankService.bankId,Guid.create(), "Наличные"));
+    this.bankList.push(new BankModel(BankService.bankId, Guid.create(), "Наличные", BankService.bankId * 10));
   }
 
   public GetAll(): BankModel[] {

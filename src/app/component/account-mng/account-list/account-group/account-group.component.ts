@@ -9,14 +9,19 @@ import { BankModel } from '../../../../model/bank.model';
   styleUrls: ['./account-group.component.sass']
 })
 export class AccountGroupComponent implements OnInit {
+  [x: string]: any;
   @Input() bank: BankModel | undefined = undefined;
 
   public accountList: AccountModel[] = [];
-
+  showAccounts: boolean = false
   constructor(private accountSrv:AccountService) {
   }
 
   ngOnInit(): void {
     this.accountList = this.accountSrv.GetByBankGuid(this.bank!.guid)
+  }
+
+  onClickCollapsed() {
+    this.showAccounts = !this.showAccounts
   }
 }

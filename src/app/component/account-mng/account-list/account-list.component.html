@@ -1,3 +1,8 @@
-<div *ngFor="let bank of bankList; index as i; first as isFirst">
-  <app-account-group [bank]="bank"></app-account-group>
-</div>
+<table>
+  <tr>
+    <th></th>
+    <th>Банк</th>
+    <th>Баланс</th>
+  </tr>
+  <app-account-group [bank]="bank" *ngFor="let bank of bankList"></app-account-group>
+</table>

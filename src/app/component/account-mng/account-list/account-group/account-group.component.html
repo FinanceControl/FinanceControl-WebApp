@@ -1,10 +1,12 @@
-<div class="bank-container">
-    <div class="bank-name" [routerLink]="['/bank',bank?.id,'transaction']">
-        <a>Bank {{bank?.name}}</a>
-    </div>
-    <div class="btn btn-primary" [routerLink]="['/bank',bank?.id]">И</div>
-</div>
-
-<div *ngFor="let account of accountList; index as i; first as isFirst">
-    <app-account-item [account]="account"></app-account-item>
-</div>
+<tr>
+<td>
+    <div (click)="onClickCollapsed()">Р</div>
+</td>
+<td>{{bank?.name}}</td>
+<td>{{bank?.balance}}</td>
+</tr>
+<tr *ngIf="showAccounts">
+    <td colspan="4">
+        <app-account-item [account]="account" *ngFor="let account of accountList"></app-account-item>
+    </td>
+</tr>

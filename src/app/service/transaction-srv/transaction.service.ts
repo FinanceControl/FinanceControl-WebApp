@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Guid } from 'guid-typescript';
+import { Observable } from 'rxjs';
 import { AccountModel } from '../../model/account.model';
 import { TransactionItemModel, TransactionModel } from '../../model/transaction.model';
 import { AccountService } from '../account-srv/account.service';
@@ -8,8 +9,9 @@ import { AccountService } from '../account-srv/account.service';
   providedIn: 'root'
 })
 export class TransactionService {
-  private static id:number = 0;
+  private static id: number = 0;
   private transactions: TransactionModel[] = []
+
   constructor(private accountSrv: AccountService) {
     let accounts = accountSrv.GetAll();
     accounts.forEach((val, idx, arr) => {
@@ -49,6 +51,12 @@ export class TransactionService {
 
   public GetForAccountById(accountId:number){
     return this.transactions.filter((val,idx,arr)=>val.fromItem?.accountId == accountId || val.toItem?.accountId == accountId)
+  }
+
+  public GetForBankByGuid(bankGuid: Guid) {
+    let accountGuids = this.accountSrv.GetByBankGuid(bankGuid).map((val, idx, arr) => val.guid);
+    return this.transactions.filter((val, idx, arr) => (val.fromItem?.accountGuid != undefined && accountGuids.includes(val.fromItem?.accountGuid))
+      || (val.toItem?.accountGuid != undefined && accountGuids.includes(val.toItem?.accountGuid)))
   }
 
   public GetForBankById(bankId:number){

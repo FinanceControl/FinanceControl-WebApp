@@ -12,9 +12,9 @@ export class AccountService {
   constructor(private bankSrv:BankService) {
     bankSrv.GetAll().forEach(bank => {
       AccountService.id += 1
-      this.accountList.push(new AccountModel(AccountService.id, Guid.create(), `${bank?.name}-Счет1`, bank?.guid!, "RUB"))
+      this.accountList.push(new AccountModel(AccountService.id, Guid.create(), `${bank?.name}-Счет1`, bank?.guid!, "RUB", AccountService.id * 10))
       AccountService.id += 1
-      this.accountList.push(new AccountModel(AccountService.id, Guid.create(), `${bank?.name}-Счет2`, bank?.guid!, "RUB"))
+      this.accountList.push(new AccountModel(AccountService.id, Guid.create(), `${bank?.name}-Счет2`, bank?.guid!, "RUB", AccountService.id * 10))
     });
   }
   public GetAll():AccountModel[]{

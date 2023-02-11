@@ -1,0 +1,9 @@
+<div class="bank-container">
+  <div class="bank-name" [routerLink]="['/bank',bank?.id,'transaction']">
+    <a>Bank {{bank?.name}}</a>
+  </div>
+</div>
+
+<div *ngFor="let account of accountList; index as i; first as isFirst">
+  <app-account-side-item [account]="account"></app-account-side-item>
+</div>

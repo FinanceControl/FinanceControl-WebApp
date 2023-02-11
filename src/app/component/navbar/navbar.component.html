@@ -5,9 +5,17 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/account']">Счета</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/transaction']">Транзакции</a>
+        </li>
+      </ul>
       <div *ngIf="!authService.loggedIn; then thenBlock else elseBlock"></div>
-      <ng-template #thenBlock><a (click)="onLogin()" class="text-success">log in</a></ng-template>
-      <ng-template #elseBlock><a (click)="onLogout()" class="text-danger">log out</a></ng-template>
+        <ng-template #thenBlock><a (click)="onLogin()" class="text-success">log in</a></ng-template>
+        <ng-template #elseBlock><a (click)="onLogout()" class="text-danger">log out</a></ng-template>
     </div>
   </div>
 </nav>

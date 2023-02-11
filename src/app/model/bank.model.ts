@@ -1,5 +1,5 @@
 import { Guid } from "guid-typescript";
 
-export class BankModel{
-  constructor(public readonly id:number, public readonly guid: Guid, public name: string){}
+export class BankModel {
+  constructor(public id: number, public guid: Guid, public name: string, public balance: number) { }
 }

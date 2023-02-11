@@ -21,7 +21,8 @@
 			"extensions": [
 				"Angular.ng-template",
 				"Syler.sass-indented",
-				"ecmel.vscode-html-css"
+				"ecmel.vscode-html-css",
+				"eamodio.gitlens"
 			]
 		}
 	}

@@ -1,0 +1,74 @@
+.transaction-container
+  display: grid
+  grid-template-columns: 1fr 2fr
+  border-top: solid 1px lightgrey
+  border-bottom: solid 1px lightgrey
+
+.transaction-header-container
+  grid-column: 1
+  container-type: inline-size
+  border-right: solid 1px lightgrey
+  border-left: solid 1px lightgrey
+
+.transaction-header
+  margin: 0 0.5em
+
+@container (min-width: 200px)
+  .transaction-header
+    display: grid
+    grid-template-columns: 6em auto
+
+  .header-date
+    grid-column: 1
+
+  .header-description
+    grid-column: 2
+
+.transaction-positions-container
+  grid-column: 2
+  display: grid
+  grid-template-columns: 1fr 1fr
+
+.positions-side-container
+  container-type: inline-size
+  border-right: solid 1px lightgrey
+  border-left: solid 1px lightgrey
+
+.credit-side .position-amount
+  color: red  
+
+.debit-side .position-amount
+  color: green
+
+.position-container
+  display: grid
+  grid-template-columns: repeat(4, minmax(2em, 1fr))
+
+.position-account
+  grid-column: 1/3
+  justify-self: center
+  align-self: center
+  margin: 0 0.5em
+
+.position-amount
+  grid-column: 3
+  justify-self: end
+  margin: 0 0.5em
+
+.position-stock
+  grid-column: 4
+  align-self: center
+  margin: 0 0.5em
+
+@container (max-width: 15em)
+  .position-container
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: repeat(2, 1fr)
+  
+  .position-amount
+    grid-row: 2
+    grid-column: 1
+
+  .position-stock
+    grid-row: 2
+    grid-column: 2

@@ -4,8 +4,6 @@ import { FormArray, FormBuilder, FormControl, FormGroup, NgModelGroup, Validator
 import { TransactionModel } from 'src/app/model/transaction.model';
 import { Transaction } from '../model/transaction.model';
 import { TransactionService } from '../service/transaction.service';
-import { TransactionHeaderFormCtrl } from '../transaction-header/transaction-header.formctrl';
-import { TransactionPositionFormCtrl } from '../transaction-position/transaction-position.formctrl';
 import { TransactionFormCtrl } from './transaction-create-form.formctrl';
 
 @Component({
@@ -17,7 +15,7 @@ export class TransactionCreateFormComponent implements OnInit {
 
   transactionForm: TransactionFormCtrl | undefined;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private transactionService: TransactionService) { }
 
   ngOnInit(): void {
     this.transactionForm = new TransactionFormCtrl(this.fb)
@@ -25,7 +23,7 @@ export class TransactionCreateFormComponent implements OnInit {
 
   onSubmit() {
     let newTransaction: Transaction = this.transactionForm!.toModel()
-    console.log(newTransaction)
+    this.transactionService.save(newTransaction)
   }
 }
 

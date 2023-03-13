@@ -10,6 +10,7 @@ import { AccountListModule } from './component/presentation/account-list/account
 import { AccountCreateModule } from './component/presentation/account-form/account-form.module';
 import { StockFormModule } from './component/presentation/stock-form/stock-form.module';
 import { TransactionFormModule } from './component/presentation/transaction-form/transaction-form.module';
+import { TransactionListModule } from './component/presentation/transaction-list/transaction-list.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TransactionFormModule } from './component/presentation/transaction-form
     AccountListModule,
     AccountCreateModule,
     StockFormModule,
-    TransactionFormModule
+    TransactionFormModule,
+    TransactionListModule
   ],
   bootstrap: [AppComponent]
 })

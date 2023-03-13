@@ -1,0 +1,24 @@
+<div class="transaction-container" (click)="onTransactionSelected()">
+  <div class="transaction-header-container">
+    <div class="transaction-header">
+      <div class="header-date">{{transaction?.date}}</div>
+      <div class="header-description">{{transaction?.description}}</div>
+    </div>
+  </div>
+  <div class="transaction-positions-container">
+    <div class="positions-side-container">
+      <div class="position-container credit-side" *ngFor="let credit of transaction?.credits">
+        <div class="position-account">{{credit.account.name}}</div>
+        <div class="position-amount">{{credit.amount}}</div>
+        <div class="position-stock">{{credit.stock}}</div>
+      </div>
+    </div>
+    <div class="positions-side-container">
+      <div class="position-container debit-side" *ngFor="let debit of transaction?.debits">
+        <div class="position-account">{{debit.account.name}}</div>
+        <div class="position-amount">{{debit.amount}}</div>
+        <div class="position-stock">{{debit.stock}}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TransactionPositionItemComponent } from './transaction-position-item/transaction-position-item.component';
 import { AccountService, MockAccountService } from './service/account.service';
 import { CurrencyService, MockCurrencyService } from './service/currency.service';
+import { MockTransactionService, TransactionService } from './service/transaction.service';
 
 
 
@@ -25,6 +26,9 @@ import { CurrencyService, MockCurrencyService } from './service/currency.service
   exports: [
     TransactionCreateFormComponent
   ],
-  providers: [{ provide: AccountService, useClass: MockAccountService }, { provide: CurrencyService, useClass: MockCurrencyService }]
+  providers: [
+    { provide: AccountService, useClass: MockAccountService },
+    { provide: CurrencyService, useClass: MockCurrencyService },
+    { provide: TransactionService, useClass: MockTransactionService }]
 })
 export class TransactionFormModule { }

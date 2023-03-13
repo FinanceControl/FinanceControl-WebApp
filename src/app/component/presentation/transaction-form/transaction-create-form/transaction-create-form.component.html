@@ -1,0 +1,5 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="transactionForm!">
+  <app-transaction-header [formData]="transactionForm!.controls.header"></app-transaction-header>
+  <app-transaction-position [formData]="transactionForm!.controls.positions"></app-transaction-position>
+  <button type="submit" class="btn btn-primary" [disabled]="!transactionForm!.valid">Сохранить</button>
+</form>

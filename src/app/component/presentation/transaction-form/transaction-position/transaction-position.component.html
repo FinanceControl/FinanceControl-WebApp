@@ -1,0 +1,17 @@
+<h2>Positions</h2>
+<a class="btn btn-outline-danger" type="button" (click)="onAddCredit()">Add credit position</a>
+<a class="btn btn-outline-success" type="button" (click)="onAddDebit()">Add debit position</a>
+<div class="item-container">  
+  <div class="side credit-side">
+    <h3>Credit</h3>
+    <app-transaction-position-item [position]="i+1" [formData]="item"
+      (removed)="onCreditRemoved($event)"
+      *ngFor="let item of formData!.controls!.credit.controls; let i = index"></app-transaction-position-item>
+  </div>
+  <div class="side debit-side">
+    <h3>Debit</h3>
+    <app-transaction-position-item [position]="i+1" [formData]="item"
+      (removed)="onDebitRemoved($event)"
+      *ngFor="let item of formData!.controls!.debit.controls; let i = index"></app-transaction-position-item>
+  </div>
+</div>

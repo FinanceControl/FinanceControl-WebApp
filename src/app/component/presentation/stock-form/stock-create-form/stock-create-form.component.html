@@ -1,0 +1,21 @@
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="form-group">
+    <label for="stock-code">Code</label>
+    <input type="text" id="stock-code" class="form-control" ngModel name="code" required #code="ngModel">
+    <span *ngIf="!code.valid && code.touched" class="help-block">Please enter a valid code</span>
+  </div>
+  <div class="form-group">
+    <label for="stock-name">Name</label>
+    <input type="text" id="stock-name" class="form-control" ngModel name="name" required #name="ngModel">
+    <span *ngIf="!name.valid && name.touched" class="help-block">Please enter a name</span>
+  </div>
+  <div class="form-group">
+    <div class="radio" *ngFor="let stockType of stock_types">
+      <label>
+        <input type="radio" name="type" ngModel [value]="stockType.key" required>
+        {{stockType.name}}
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Сохранить</button>
+</form>

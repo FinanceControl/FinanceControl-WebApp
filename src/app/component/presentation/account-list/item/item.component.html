@@ -1,0 +1,18 @@
+<div class="item" (click)="onItemClick()">
+  <div class="item-name">
+    <img *ngIf="!showChilds && accountItem?.hasChilds" src="assets/arrow-right.svg" alt="dropdown-button">
+    <img *ngIf="showChilds && accountItem?.hasChilds" src="assets/arrow-down.svg" alt="dropdown-button">
+    <img *ngIf="!accountItem?.hasChilds" src="assets/minus.svg" alt="dropdown-button">
+    {{accountItem?.name}}
+  </div>
+  <div class="item-balance">
+    <div class="balance-value"
+      [ngClass]="[isPositiveBalance() ? 'positive-balance':'', isNegativeBalance() ? 'negative-balance':'']">
+      {{accountItem?.balance}} </div> {{accountItem?.currencyCode}}
+  </div>
+</div>
+<div *ngIf="showChilds" class="sub-list-container">
+  <div class="sub-list">
+    <app-account-list [itemList]="childs"></app-account-list>
+  </div>
+</div>

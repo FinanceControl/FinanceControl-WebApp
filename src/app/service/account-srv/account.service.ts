@@ -27,7 +27,7 @@ export class AccountService {
     return this.accountList.filter((val,idx,arr) => val.bankGuid == bankGuid)
   }
 
-  public GetByGuid(accountGuid:Guid):AccountModel{
+  public GetByGuid(accountGuid: Guid): AccountModel | undefined {
     return this.accountList.find((val, idx,arr)=>val.guid == accountGuid)!
   }
   public GetById(Id:number):AccountModel{

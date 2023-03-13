@@ -1,0 +1,36 @@
+<div class="item-header">
+  <h3>#{{position!}}</h3>
+  <a class="btn btn-danger" (click)="raiseRemovedEvent()">X</a>
+</div>
+<div class="form-group">
+  <label [for]="'account_'+uniqueComponentId()">Account</label>
+  <input type="text" [id]="'account_'+uniqueComponentId()" [attr.list]="'account-list_'+uniqueComponentId()"
+    class="form-control" [formControl]="formData!.controls.account" on-focusout="onAccountSetted()">
+  <datalist [id]="'account-list_'+uniqueComponentId()">
+    <option *ngFor="let account of avaliable_accounts" [value]="account.name">{{account.guid}}</option>
+  </datalist>
+  <span [hidden]="!isHelpBlockNeed(formData!.controls.account)" class="help-block">Please
+    enter
+    account</span>
+</div>
+<div class="form-group">
+  <label [for]="'amount_'+uniqueComponentId()">Amount</label>
+  <input type="number" [id]="'amount_'+uniqueComponentId()" class="form-control"
+    [formControl]="formData!.controls.amount">
+  <span [hidden]="!isHelpBlockNeed(formData!.controls.amount)" class="help-block">Please enter
+    amount</span>
+</div>
+<div class="form-group">
+  <fieldset [disabled]="setted_account == undefined || !setted_account!.allowMultiStock">
+    <label [for]="'currency_'+uniqueComponentId()">Currency</label>
+    <input type="text" [id]="'currency_'+uniqueComponentId()" [attr.list]="'currency-list'+uniqueComponentId()"
+      class="form-control" [formControl]="formData!.controls.currency">
+    <datalist [id]="'currency-list'+uniqueComponentId()">
+      <option *ngFor="let currency of avaliable_currencies" [value]="currency.code">{{currency.description}}</option>
+    </datalist>
+    <span [hidden]="!isHelpBlockNeed(formData!.controls.currency)" class="help-block">Please
+      enter
+      currency</span>
+  </fieldset>
+</div>
+<span [hidden]="!isHelpBlockNeed(formData!)" class="help-block">Item is incorrect</span>
